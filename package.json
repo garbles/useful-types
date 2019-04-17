@@ -11,6 +11,6 @@
     "np": "^4.0.2"
   },
   "scripts": {
-    "pub": "np"
+    "pub": "np --yolo"
   }
 }
