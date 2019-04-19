@@ -1,6 +1,6 @@
 {
   "name": "useful-types",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Some useful higher-order types",
   "repository": "https://github.com/garbles/useful-types",
   "main": "index.js",
