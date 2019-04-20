@@ -16,9 +16,7 @@ type InternalFlattenList<T> =
   J extends null ? [A] | [A, C] | [A, C, E] | [A, C, E, G] | [A, C, E, G, I] :
   J extends [infer K, infer L] ?
   L extends null ? [A] | [A, C] | [A, C, E] | [A, C, E, G] | [A, C, E, G, I] | [A, C, E, G, I, K] :
-  L extends [infer M, infer N] ?
-  N extends null ? [A] | [A, C] | [A, C, E] | [A, C, E, G] | [A, C, E, G, I] | [A, C, E, G, I, K] | [A, C, E, G, I, K, M] :
-  [] : [] : [] : [] : [] : [] : [] : [];
+  [] : [] : [] : [] : [] : [] : [];
 
 /**
  * Returns all valid key paths for a given type alias `T`.
@@ -29,7 +27,7 @@ export type KeyPath<T> = InternalFlattenList<InternalKeyList<T>>;
 /**
  * Returns the value type from a key path `KP` on a type alias `T`.
  */
-export type KeyPathValue<T, KP extends [] | KeyPath<T>> =
+export type KeyPathValue<T, KP> =
   KP extends [] ? T :
   KP extends [infer A] ? A extends keyof T ? T[A] : never : 
   KP extends [infer A, infer B] ? A extends keyof T ? B extends keyof T[A] ? T[A][B] : never : never :
