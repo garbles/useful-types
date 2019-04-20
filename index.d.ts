@@ -16,9 +16,7 @@ type InternalFlattenList<T> =
   J extends null ? [A] | [A, C] | [A, C, E] | [A, C, E, G] | [A, C, E, G, I] :
   J extends [infer K, infer L] ?
   L extends null ? [A] | [A, C] | [A, C, E] | [A, C, E, G] | [A, C, E, G, I] | [A, C, E, G, I, K] :
-  L extends [infer M, infer N] ?
-  N extends null ? [A] | [A, C] | [A, C, E] | [A, C, E, G] | [A, C, E, G, I] | [A, C, E, G, I, K] | [A, C, E, G, I, K, M] :
-  [] : [] : [] : [] : [] : [] : [] : [];
+  [] : [] : [] : [] : [] : [] : [];
 
 /**
  * Returns all valid key paths for a given type alias `T`.
@@ -37,5 +35,4 @@ export type KeyPathValue<T, KP extends [] | KeyPath<T>> =
   KP extends [infer A, infer B, infer C, infer D] ? A extends keyof T ? B extends keyof T[A] ? C extends keyof T[A][B] ? D extends keyof T[A][B][C] ? T[A][B][C][D] : never : never : never : never :
   KP extends [infer A, infer B, infer C, infer D, infer E] ? A extends keyof T ? B extends keyof T[A] ? C extends keyof T[A][B] ? D extends keyof T[A][B][C] ? E extends keyof T[A][B][C][D] ? T[A][B][C][D][E] : never : never : never : never : never :
   KP extends [infer A, infer B, infer C, infer D, infer E, infer F] ? A extends keyof T ? B extends keyof T[A] ? C extends keyof T[A][B] ? D extends keyof T[A][B][C] ? E extends keyof T[A][B][C][D] ? F extends keyof T[A][B][C][D][E] ? T[A][B][C][D][E][F] : never : never : never : never : never : never : 
-  KP extends [infer A, infer B, infer C, infer D, infer E, infer F, infer G] ? A extends keyof T ? B extends keyof T[A] ? C extends keyof T[A][B] ? D extends keyof T[A][B][C] ? E extends keyof T[A][B][C][D] ? F extends keyof T[A][B][C][D][E] ? G extends keyof T[A][B][C][D][E][F] ? T[A][B][C][D][E][F][G] : never : never : never : never : never : never : never :
   never;
